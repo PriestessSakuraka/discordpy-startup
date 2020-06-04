@@ -45,14 +45,4 @@ async def on_raw_reaction_add(payload):
 async def ping(ctx):
     await ctx.send('pong')
 
-@bot.command()
-async def getname(ctx, member: discord.Member):
-
-    await ctx.send(f'User name: {member.name}, id: {member.id}')
-
-    with requests.get(member.avatar_url_as(format='png')) as r:
-        img_data = r.content
-    with open(f'{member.name}.png', 'wb') as f:
-        f.write(img_data)
-
 bot.run(token)
